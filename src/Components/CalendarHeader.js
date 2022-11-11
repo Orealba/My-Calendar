@@ -13,6 +13,9 @@ const CalendarHeader = () => {
         </div>
         <div className="col-md-4">
           <h1 className="calendar-header__title">MY CALENDAR</h1>
+          <h4 className="calendar-header__description">
+            Add and edit your events easily. Let's start:
+          </h4>
         </div>
         <div className="col-md-4"></div>
       </div>
