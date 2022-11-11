@@ -8,3 +8,8 @@
   padding-top: 2rem;
   padding-left: 2rem;
 }
+
+.calendar-header__description {
+  color: #060133;
+  text-align: center;
+}
