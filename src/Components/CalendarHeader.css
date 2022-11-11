@@ -1,0 +1,10 @@
+.calendar-header__title {
+  color: #060133;
+  text-align: center;
+}
+
+.calendar-header-logo {
+  width: 15%;
+  padding-top: 2rem;
+  padding-left: 2rem;
+}
