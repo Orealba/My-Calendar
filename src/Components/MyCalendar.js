@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import './MyCalendar.css'
-import DatePicker from 'react-datepicker'
+
+import AddEvent from './AddEvent.js'
 
 const locales = {
   'en-GB': require('date-fns/locale/en-GB'),
@@ -17,29 +18,14 @@ const localizer = dateFnsLocalizer({
   getDay,
   locales,
 })
-const events = [
-  {
-    title: 'doctor',
-    description: 'cheacking and results',
-    allDay: true,
-    start: new Date(2022, 10, 25),
-    end: new Date(2022, 10, 25),
-  },
-  {
-    title: 'vacations',
-    description: 'travel to Coruña',
-    allDay: true,
-    start: new Date(2022, 11, 14),
-    end: new Date(2023, 0, 16),
-  },
-]
 
-const MyCalendar = () => {
+const MyCalendar = (props) => {
   return (
     <div>
+      <AddEvent classname="mycalendar__addEvent__component" />
       <Calendar
         localizer={localizer}
-        events={events}
+        events={props.allEvents}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500, margin: '50px' }}

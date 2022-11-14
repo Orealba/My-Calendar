@@ -1,0 +1,17 @@
+.addEvent__title {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+.addEvent__title__input {
+  width: 20%;
+  margin-left: 40px;
+  margin-bottom: 3rem;
+}
+
+.addevent__date__input {
+  margin-right: 20px !important;
+}
+
+.addEvent__button__sudmit {
+  margin-top: 10px;
+}
