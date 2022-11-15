@@ -2,8 +2,20 @@ import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import './ModalEvent.css'
+import { useNavigate } from 'react-router-dom'
 
 const ModalEvent = (props) => {
+  const navigate = useNavigate()
+  const redirection = () => {
+    console.log('hola')
+
+    navigate('/editevent', {
+      state: {
+        editEvents: props.selectedEvent,
+      },
+    })
+  }
+
   console.log(props.selectedEvent)
   return (
     <div>
@@ -23,7 +35,9 @@ const ModalEvent = (props) => {
             Close
           </Button>
 
-          <Button variant="primary">Edit</Button>
+          <Button variant="primary" onClick={redirection}>
+            Edit
+          </Button>
         </Modal.Footer>
       </Modal>
     </div>

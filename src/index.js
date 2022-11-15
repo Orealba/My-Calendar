@@ -12,7 +12,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<App />}></Route>
-        <Route exact path="/editevent" element={<EditEvent />}></Route>
+        <Route exact path="/editevent" element={<EditEvent />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
