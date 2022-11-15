@@ -32,13 +32,13 @@ const AddEvent = (props) => {
         />
         <DatePicker
           placeholderText="Start Date"
-          classname="addEvent__datePicker"
+          className="addEvent__datePicker"
           selected={props.newEvent.start}
           onChange={(start) => props.setNewEvent({ ...props.newEvent, start })}
         />
         <DatePicker
           placeholderText="End Date"
-          classname="addEvent__datePicker"
+          className="addEvent__datePicker"
           selected={props.newEvent.end}
           onChange={(end) => props.setNewEvent({ ...props.newEvent, end })}
         />

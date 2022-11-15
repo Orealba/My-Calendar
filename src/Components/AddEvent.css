@@ -6,10 +6,15 @@
 
 .addEvent__title__input {
   display: grid;
-  width: 9.8%;
+  width: 11.45rem;
+  margin-bottom: 1rem;
 }
 
 .addEvent__button__sudmit {
   width: 10%;
   margin-top: 1rem;
+}
+
+.addEvent__datePicker {
+  margin-bottom: 1rem;
 }
