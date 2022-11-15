@@ -1,12 +1,16 @@
+.calendarHeader__box {
+  display: flex;
+}
 .calendar-header__title {
-  color: #060133;
+  color: #0a0352;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .calendar-header-logo {
-  width: 15%;
+  width: 40%;
   padding-top: 2rem;
-  padding-left: 2rem;
+  margin-left: 3rem;
 }
 
 .calendar-header__description {
