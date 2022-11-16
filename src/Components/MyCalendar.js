@@ -27,7 +27,7 @@ const events = [
     description: 'cheacking and results',
     allDay: true,
     start: new Date(2022, 10, 25),
-    end: new Date(2022, 10, 25),
+    end: new Date(2022, 10, 30),
   },
 ]
 

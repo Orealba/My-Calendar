@@ -2,9 +2,11 @@
   display: flex;
 }
 .calendar-header__title {
-  color: #0a0352;
+  color: #25253d;
   text-align: center;
   margin-top: 2rem;
+  font-weight: bold !important;
+  margin-bottom: 1rem;
 }
 
 .calendar-header-logo {
@@ -14,6 +16,7 @@
 }
 
 .calendar-header__description {
+  margin-bottom: 2rem;
   color: #060133;
   text-align: center;
 }

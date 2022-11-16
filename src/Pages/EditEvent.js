@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './EditEvent.css'
 import CalendarHeader from '../Components/CalendarHeader.js'
 import 'react-datepicker/dist/react-datepicker.css'
 import DatePicker from 'react-datepicker'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 const EditEvent = (props) => {
+  const navigate = useNavigate()
+  const redirection = () => {
+    navigate('/', {
+      state: {
+        editEvents: props.selectedEvent,
+      },
+    })
+  }
   const location = useLocation()
-  console.log(location.state.editEvents)
   return (
     <div>
       <CalendarHeader />
@@ -28,20 +37,36 @@ const EditEvent = (props) => {
             <label for="inputPassword4" class="form-label">
               Description
             </label>
-            <input type="text" class="form-control" id="inputPassword4" />
+            <input
+              type="text"
+              class="form-control"
+              id="inputEmail4"
+              value={location.state.editEvents.description}
+            />
           </div>
-
-          <div class="col-12">
-            <label for="inputAddress" class="form-label">
-              Time
+          <div className="col-12">
+            <label for="inputPassword4" class="form-label">
+              Start Date
             </label>
             <input
               type="text"
               class="form-control"
-              id="inputAddress"
-              placeholder="1234 Main St"
+              id="inputEmail4"
+              value={location.state.editEvents.start}
             />
           </div>
+          <div className="col-12">
+            <label for="inputPassword4" class="form-label">
+              End Date
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputEmail4"
+              value={location.state.editEvents.end}
+            />
+          </div>
+          <div class="col-12"></div>
           <div class="col-12">
             <label for="inputAddress2" class="form-label">
               Address
@@ -53,12 +78,13 @@ const EditEvent = (props) => {
               placeholder="Apartment, studio, or floor"
             />
           </div>
-          <button
-            className="addEvent__button__sudmit"
-            onClick={props.handleAddEvent}
+          <Button
+            variant="primary"
+            className="editEvent__save__button"
+            onClick={redirection}
           >
-            Add Event
-          </button>
+            Save
+          </Button>{' '}
         </form>
       </div>
     </div>

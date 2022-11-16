@@ -8,13 +8,29 @@
   display: grid;
   width: 11.45rem;
   margin-bottom: 1rem;
+  border-radius: 30px;
+  border-color: #c8c5c5d5;
+  text-align: center;
 }
 
 .addEvent__button__sudmit {
-  width: 10%;
+  width: 11.45rem;
   margin-top: 1rem;
+  background-color: #ff355e !important;
+  border: #ff355e !important;
+  border-radius: 50px !important;
+  text-align: center !important;
+  font-weight: bold !important;
 }
 
 .addEvent__datePicker {
   margin-bottom: 1rem;
+  border-radius: 30px;
+  border-color: #c8c5c5d5;
+  text-align: center;
+}
+
+.rbc-event {
+  background-color: #ff355e !important;
+  font-weight: bold !important;
 }

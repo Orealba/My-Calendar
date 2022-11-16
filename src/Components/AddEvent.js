@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from 'react-bootstrap/Button'
 import './MyCalendar.css'
 import './AddEvent.css'
 import DatePicker from 'react-datepicker'
@@ -42,12 +42,13 @@ const AddEvent = (props) => {
           selected={props.newEvent.end}
           onChange={(end) => props.setNewEvent({ ...props.newEvent, end })}
         />
-        <button
+        <Button
+          variant="primary"
           className="addEvent__button__sudmit"
           onClick={props.handleAddEvent}
         >
           Add Event
-        </button>
+        </Button>{' '}
       </div>
     </div>
   )

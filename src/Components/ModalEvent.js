@@ -31,11 +31,19 @@ const ModalEvent = (props) => {
           {props.selectedEvent ? props.selectedEvent.description : ''}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={props.handleClose}>
+          <Button
+            variant="secondary"
+            className="modalEvent__buttons"
+            onClick={props.handleClose}
+          >
             Close
           </Button>
 
-          <Button variant="primary" onClick={redirection}>
+          <Button
+            variant="primary"
+            className="modalEvent__buttons"
+            onClick={redirection}
+          >
             Edit
           </Button>
         </Modal.Footer>
