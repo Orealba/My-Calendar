@@ -17,63 +17,66 @@ const EditEvent = (props) => {
     })
   }
   const location = useLocation()
+
   return (
     <div>
       <CalendarHeader />
       <div className="editEvent__box">
-        <form class="row g-3">
-          <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">
+        <form className="row g-3">
+          <div className="col-md-6">
+            <label for="inputEmail4" className="form-label">
               Title
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
-              value={location.state.editEvents.title}
+              defaultValue={location.state.editEvents.title}
             />
           </div>
-          <div class="col-md-6">
-            <label for="inputPassword4" class="form-label">
+          <div className="col-md-6">
+            <label for="inputPassword4" className="form-label">
               Description
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inputEmail4"
-              value={location.state.editEvents.description}
+              defaultValue={location.state.editEvents.description}
             />
           </div>
+          <div className=" col-md-6  ">
+            <label for="inputEmail4">Start</label>
+          </div>
+          <div className=" col-md-6 ">
+            <label for="inputEmail4">End</label>
+          </div>
+          <div className=" col-md-6 editEvent__datePicker__box">
+            <DatePicker
+              placeholderText="Start Date"
+              className="form-control"
+              selected={location.state.editEvents.start}
+              onChange={(start) =>
+                props.setNewEvent({ ...props.newEvent, start })
+              }
+            />
+          </div>
+          <div className=" col-md-6 editEvent__datePicker__box">
+            <DatePicker
+              placeholderText="End Date"
+              className="form-control"
+              selected={location.state.editEvents.end}
+              onChange={(end) => props.setNewEvent({ ...props.newEvent, end })}
+            />
+          </div>
+          <div className="col-12"></div>
           <div className="col-12">
-            <label for="inputPassword4" class="form-label">
-              Start Date
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputEmail4"
-              value={location.state.editEvents.start}
-            />
-          </div>
-          <div className="col-12">
-            <label for="inputPassword4" class="form-label">
-              End Date
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputEmail4"
-              value={location.state.editEvents.end}
-            />
-          </div>
-          <div class="col-12"></div>
-          <div class="col-12">
-            <label for="inputAddress2" class="form-label">
+            <label for="inputAddress2" className="form-label">
               Address
             </label>
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               id="inputAddress2"
               placeholder="Apartment, studio, or floor"
             />
