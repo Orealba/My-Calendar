@@ -5,26 +5,24 @@ import './ModalEvent.css'
 import { useNavigate } from 'react-router-dom'
 
 const ModalEvent = (props) => {
+  console.log(props.selectedEvent)
   const navigate = useNavigate()
   const redirection = () => {
-    console.log('hola')
-
-    navigate('/editevent', {
+    navigate(`/editevent/${props.selectedEvent.id}`, {
       state: {
         editEvents: props.selectedEvent,
       },
     })
   }
 
-  console.log(props.selectedEvent)
   return (
     <div>
       <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
             {props.selectedEvent ? props.selectedEvent.title : ''}
-            {props.selectedEvent ? props.selectedEvent.start.toString() : ''}
-            {props.selectedEvent ? props.selectedEvent.end.toString() : ''}
+            {props.selectedEvent ? props.selectedEvent.start_date : ''}
+            {props.selectedEvent ? props.selectedEvent.end_date : ''}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

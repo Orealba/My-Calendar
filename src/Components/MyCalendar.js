@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
 import format from 'date-fns/format'
 import parse from 'date-fns/parse'
@@ -21,16 +21,6 @@ const localizer = dateFnsLocalizer({
   locales,
 })
 
-const events = [
-  {
-    title: 'doctor',
-    description: 'cheacking and results',
-    allDay: true,
-    start: new Date(2022, 10, 25),
-    end: new Date(2022, 10, 30),
-  },
-]
-
 const MyCalendar = (props) => {
   const [newEvent, setNewEvent] = useState({
     title: '',
@@ -38,9 +28,9 @@ const MyCalendar = (props) => {
     start: '',
     end: '',
   })
-  const [allEvents, setAllEvents] = useState(events)
+
   function handleAddEvent() {
-    setAllEvents([...allEvents, newEvent])
+    setEvents([...events, newEvent])
     setNewEvent({
       title: '',
       description: '',
@@ -65,24 +55,43 @@ const MyCalendar = (props) => {
     window.clearTimeout(clickRef?.current)
     clickRef.current = window.setTimeout(() => {
       handleShow()
-
-      //window.alert(buildMessage(calEvent, 'onSelectEvent'))
     }, 250)
   }, [])
 
+  const [isLoading, setIsLoading] = useState(true)
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:5000/events')
+      .then((response) => response.json())
+      .then((theEvent) => {
+        console.log(theEvent)
+        setEvents(theEvent)
+
+        setIsLoading(false)
+      })
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
   return (
     <div>
       <AddEvent
         setNewEvent={setNewEvent}
         newEvent={newEvent}
         handleAddEvent={handleAddEvent}
-        allEvents={allEvents}
+        allEvents={events}
       />
       <Calendar
         localizer={localizer}
-        events={allEvents}
-        startAccessor="start"
-        endAccessor="end"
+        events={events}
+        startAccessor="start_date"
+        endAccessor="end_date"
         style={{ height: 500, margin: '50px' }}
         onSelectEvent={showModal}
       />
