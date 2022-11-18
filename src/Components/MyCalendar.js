@@ -48,7 +48,7 @@ const MyCalendar = (props) => {
   useEffect(() => {
     handleAddEvent('')
   }, [])
-  function handleAddEvent(message) {
+  const handleAddEvent = (message) => {
     fetch('http://localhost:5000/events')
       .then((response) => response.json())
       .then((theEvent) => {
@@ -77,6 +77,7 @@ const MyCalendar = (props) => {
         onSelectEvent={showModal}
       />
       <ModalEvent
+        handleAddEvent={handleAddEvent}
         show={show}
         handleClose={handleClose}
         selectedEvent={selectedEvent}

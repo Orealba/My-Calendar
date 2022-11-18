@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import './ModalEvent.css'
 import { useNavigate } from 'react-router-dom'
 
 const ModalEvent = (props) => {
-  console.log(props.selectedEvent)
+  const deleteEvent = () => {
+    fetch(`http://localhost:5000/events/${props.selectedEvent.id}`, {
+      method: 'DELETE',
+    })
+      .then((json) => props.handleAddEvent('Deleted'))
+      .then(props.handleClose)
+      .catch((err) =>
+        //props.handleAddEvent('did not update')
+        console.log(err)
+      )
+  }
+
   const navigate = useNavigate()
   const redirection = () => {
     navigate(`/editevent/${props.selectedEvent.id}`)
@@ -17,8 +28,6 @@ const ModalEvent = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>
             {props.selectedEvent ? props.selectedEvent.title : ''}
-            {props.selectedEvent ? props.selectedEvent.start_date : ''}
-            {props.selectedEvent ? props.selectedEvent.end_date : ''}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -26,19 +35,18 @@ const ModalEvent = (props) => {
         </Modal.Body>
         <Modal.Footer>
           <Button
-            variant="secondary"
-            className="modalEvent__buttons"
-            onClick={props.handleClose}
-          >
-            Close
-          </Button>
-
-          <Button
             variant="primary"
             className="modalEvent__buttons"
             onClick={redirection}
           >
             Edit
+          </Button>
+          <Button
+            variant="primary"
+            className="modalEvent__buttons"
+            onClick={deleteEvent}
+          >
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
