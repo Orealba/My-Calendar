@@ -8,11 +8,7 @@ const ModalEvent = (props) => {
   console.log(props.selectedEvent)
   const navigate = useNavigate()
   const redirection = () => {
-    navigate(`/editevent/${props.selectedEvent.id}`, {
-      state: {
-        editEvents: props.selectedEvent,
-      },
-    })
+    navigate(`/editevent/${props.selectedEvent.id}`)
   }
 
   return (

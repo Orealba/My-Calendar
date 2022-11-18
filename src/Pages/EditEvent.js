@@ -1,13 +1,13 @@
 import React from 'react'
 import './EditEvent.css'
 import CalendarHeader from '../Components/CalendarHeader.js'
-import EditOptions from '../Components/EventOptions.js'
+import Edit from '../Components/Edit.js'
 
 const EditEvent = () => {
   return (
     <div>
       <CalendarHeader />
-      <EditOptions />
+      <Edit />
     </div>
   )
 }

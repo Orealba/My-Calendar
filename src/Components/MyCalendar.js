@@ -22,22 +22,6 @@ const localizer = dateFnsLocalizer({
 })
 
 const MyCalendar = (props) => {
-  const [newEvent, setNewEvent] = useState({
-    title: '',
-    description: '',
-    start: '',
-    end: '',
-  })
-
-  function handleAddEvent() {
-    setEvents([...events, newEvent])
-    setNewEvent({
-      title: '',
-      description: '',
-      start: '',
-      end: '',
-    })
-  }
   const [selectedEvent, setSelectedEvent] = useState({
     title: '',
     description: '',
@@ -62,15 +46,17 @@ const MyCalendar = (props) => {
   const [events, setEvents] = useState([])
 
   useEffect(() => {
+    handleAddEvent('')
+  }, [])
+  function handleAddEvent(message) {
     fetch('http://localhost:5000/events')
       .then((response) => response.json())
       .then((theEvent) => {
         console.log(theEvent)
         setEvents(theEvent)
-
         setIsLoading(false)
       })
-  }, [])
+  }
 
   if (isLoading) {
     return (
@@ -81,12 +67,7 @@ const MyCalendar = (props) => {
   }
   return (
     <div>
-      <AddEvent
-        setNewEvent={setNewEvent}
-        newEvent={newEvent}
-        handleAddEvent={handleAddEvent}
-        allEvents={events}
-      />
+      <AddEvent handleAddEvent={handleAddEvent} />
       <Calendar
         localizer={localizer}
         events={events}
