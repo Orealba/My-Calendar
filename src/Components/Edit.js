@@ -18,7 +18,7 @@ const Edit = (props) => {
   })
   const onClick = () => {
     console.log(JSON.stringify(event))
-    fetch(`http://localhost:5000/events/${id}`, {
+    fetch(`http://localhost:5000/api/events/${id}`, {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -30,7 +30,7 @@ const Edit = (props) => {
       )
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/events/${id}`)
+    fetch(`http://localhost:5000/api/events/${id}`)
       .then((response) => response.json())
       .then((theEvent) => {
         console.log(theEvent)
@@ -41,7 +41,7 @@ const Edit = (props) => {
   if (isLoading) {
     return (
       <div>
-        <h1>Loading...</h1>
+        <h1 className="edit_title"> Loading...</h1>
       </div>
     )
   }

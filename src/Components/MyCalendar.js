@@ -25,8 +25,8 @@ const MyCalendar = (props) => {
   const [selectedEvent, setSelectedEvent] = useState({
     title: '',
     description: '',
-    start: '',
-    end: '',
+    start_date: '',
+    end_date: '',
   })
 
   const [show, setShow] = useState(false)
@@ -49,7 +49,7 @@ const MyCalendar = (props) => {
     handleAddEvent('')
   }, [])
   const handleAddEvent = (message) => {
-    fetch('http://localhost:5000/events')
+    fetch('http://localhost:5000/api/events')
       .then((response) => response.json())
       .then((theEvent) => {
         console.log(theEvent)
