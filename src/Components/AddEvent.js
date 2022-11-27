@@ -73,7 +73,7 @@ const AddEvent = (props) => {
             setNewEvent({
               ...newEvent,
               end_date: new Date(
-                end_date.getTime() - end_date.getTimezoneOffset() * 60001
+                end_date.getTime() - end_date.getTimezoneOffset() * 61000
               ),
             })
           }

@@ -87,7 +87,15 @@ const Edit = (props) => {
               placeholderText="Start Date"
               className="form-control"
               selected={new Date(event.start_date).getTime()}
-              onChange={(start_date) => setEvent({ ...event, start_date })}
+              onChange={(start_date) =>
+                setEvent({
+                  ...event,
+                  start_date: new Date(
+                    start_date.getTime() -
+                      start_date.getTimezoneOffset() * 60000
+                  ),
+                })
+              }
             />
           </div>
           <div className=" col-md-6 editEvent__datePicker__box">
@@ -95,7 +103,14 @@ const Edit = (props) => {
               placeholderText="End Date"
               className="form-control"
               selected={new Date(event.end_date).getTime()}
-              onChange={(end_date) => setEvent({ ...event, end_date })}
+              onChange={(end_date) =>
+                setEvent({
+                  ...event,
+                  end_date: new Date(
+                    end_date.getTime() - end_date.getTimezoneOffset() * 61000
+                  ),
+                })
+              }
             />
           </div>
           <Button
