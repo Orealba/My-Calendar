@@ -52,7 +52,6 @@ const MyCalendar = (props) => {
     fetch('http://localhost:5000/api/events')
       .then((response) => response.json())
       .then((theEvent) => {
-        console.log(theEvent)
         setEvents(theEvent)
         setIsLoading(false)
       })

@@ -9,7 +9,7 @@ const Edit = (props) => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(true)
   let { id } = useParams()
-  console.log(id)
+
   const [event, setEvent] = useState({
     title: '',
     description: '',
@@ -17,23 +17,18 @@ const Edit = (props) => {
     end_date: '',
   })
   const onClick = () => {
-    console.log(JSON.stringify(event))
     fetch(`http://localhost:5000/api/events/${id}`, {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     })
       .then((json) => navigate(`/`))
-      .catch((err) =>
-        //props.handleAddEvent('did not update')
-        console.log(err)
-      )
+      .catch((err) => console.log(err))
   }
   useEffect(() => {
     fetch(`http://localhost:5000/api/events/${id}`)
       .then((response) => response.json())
       .then((theEvent) => {
-        console.log(theEvent)
         setEvent(theEvent)
         setIsLoading(false)
       })

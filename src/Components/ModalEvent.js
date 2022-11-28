@@ -11,10 +11,7 @@ const ModalEvent = (props) => {
     })
       .then((json) => props.handleAddEvent('Deleted'))
       .then(props.handleClose)
-      .catch((err) =>
-        //props.handleAddEvent('did not update')
-        console.log(err)
-      )
+      .catch((err) => console.log(err))
   }
 
   const navigate = useNavigate()
