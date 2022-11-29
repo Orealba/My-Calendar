@@ -30,6 +30,16 @@ const ModalEvent = (props) => {
         <Modal.Body>
           {props.selectedEvent ? props.selectedEvent.description : ''}
         </Modal.Body>
+        <Modal.Body>
+          {props.selectedEvent
+            ? new Date(props.selectedEvent.start_date).toLocaleDateString()
+            : ''}
+          <p>
+            {props.selectedEvent
+              ? new Date(props.selectedEvent.end_date).toLocaleDateString()
+              : ''}
+          </p>
+        </Modal.Body>
         <Modal.Footer>
           <Button
             variant="primary"

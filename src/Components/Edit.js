@@ -29,6 +29,7 @@ const Edit = (props) => {
     fetch(`http://localhost:5000/api/events/${id}`)
       .then((response) => response.json())
       .then((theEvent) => {
+        console.log(theEvent)
         setEvent(theEvent)
         setIsLoading(false)
       })
@@ -42,24 +43,69 @@ const Edit = (props) => {
   }
 
   return (
-    <div>
-      <div className="editEvent__box">
-        <form className="row g-3">
-          <div className="col-md-6">
-            <label for="inputEmail4" className="form-label">
-              Title
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="inputEmail4"
-              defaultValue={event.title}
-              onChange={(e) => setEvent({ ...event, title: e.target.value })}
-            />
+    <div className="row">
+      <div className="col-md-4"></div>
+      <div className="col-md-4 editEvent__box">
+        <form>
+          <div className="row">
+            <div className="col-md-12">
+              <label for="inputEmail4" className="form-label">
+                <h4 className="edit__form__titles">Title: </h4>
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputEmail4"
+                defaultValue={event.title}
+                onChange={(e) => setEvent({ ...event, title: e.target.value })}
+              />
+            </div>
           </div>
-          <div className="col-md-6">
+          <div className="row">
+            <div className=" col-md-12 editEvent__datePicker__box">
+              <label for="inputEmail4">
+                <h4 className="edit__form__titles">Start:</h4>
+              </label>
+              <DatePicker
+                placeholderText="Start Date"
+                className="form-control"
+                selected={new Date(event.start_date).getTime()}
+                onChange={(start_date) =>
+                  setEvent({
+                    ...event,
+                    start_date: new Date(
+                      start_date.getTime() -
+                        start_date.getTimezoneOffset() * 60000
+                    ),
+                  })
+                }
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className=" col-md-12 editEvent__datePicker__box">
+              <label for="inputEmail4">
+                <h4 className="edit__form__titles">End:</h4>
+              </label>
+              <DatePicker
+                placeholderText="End Date"
+                className="form-control"
+                selected={new Date(event.end_date).getTime()}
+                onChange={(end_date) =>
+                  setEvent({
+                    ...event,
+                    end_date: new Date(
+                      end_date.getTime() - end_date.getTimezoneOffset() * 61000
+                    ),
+                  })
+                }
+              />
+            </div>
+          </div>
+
+          <div className="col-md-12">
             <label for="inputPassword4" className="form-label">
-              Description
+              <h4 className="edit__form__titles">Description: </h4>
             </label>
             <input
               type="text"
@@ -68,43 +114,6 @@ const Edit = (props) => {
               defaultValue={event.description}
               onChange={(e) =>
                 setEvent({ ...event, description: e.target.value })
-              }
-            />
-          </div>
-          <div className=" col-md-6  ">
-            <label for="inputEmail4">Start</label>
-          </div>
-          <div className=" col-md-6 ">
-            <label for="inputEmail4">End</label>
-          </div>
-          <div className=" col-md-6 editEvent__datePicker__box">
-            <DatePicker
-              placeholderText="Start Date"
-              className="form-control"
-              selected={new Date(event.start_date).getTime()}
-              onChange={(start_date) =>
-                setEvent({
-                  ...event,
-                  start_date: new Date(
-                    start_date.getTime() -
-                      start_date.getTimezoneOffset() * 60000
-                  ),
-                })
-              }
-            />
-          </div>
-          <div className=" col-md-6 editEvent__datePicker__box">
-            <DatePicker
-              placeholderText="End Date"
-              className="form-control"
-              selected={new Date(event.end_date).getTime()}
-              onChange={(end_date) =>
-                setEvent({
-                  ...event,
-                  end_date: new Date(
-                    end_date.getTime() - end_date.getTimezoneOffset() * 61000
-                  ),
-                })
               }
             />
           </div>
@@ -117,6 +126,7 @@ const Edit = (props) => {
           </Button>
         </form>
       </div>
+      <div className="col-md-4"></div>
     </div>
   )
 }

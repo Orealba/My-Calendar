@@ -4,7 +4,7 @@
 .myCalendar__box {
   display: flex;
 }
-.myCalendar__addEvent {
-}
-.myCalendar__calendar {
+.myCalendar__title_h2 {
+  margin-left: 3rem;
+  color: #25253d;
 }

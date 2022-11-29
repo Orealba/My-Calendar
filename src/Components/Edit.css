@@ -13,10 +13,19 @@
   font-weight: bold !important;
   font-size: 18px;
   height: 3rem;
-
+  width: 10rem;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .edit_title {
   margin-right: 5rem;
+}
+
+.edit__form__titles {
+  margin-top: 1rem;
+}
+
+.form-control {
+  height: 3rem;
 }

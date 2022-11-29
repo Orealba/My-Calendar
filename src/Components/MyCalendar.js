@@ -13,6 +13,7 @@ import AddEvent from './AddEvent'
 const locales = {
   'en-GB': require('date-fns/locale/en-GB'),
 }
+const styleCalendar = { height: 550, margin: '5px' }
 const localizer = dateFnsLocalizer({
   format,
   parse,
@@ -67,19 +68,22 @@ const MyCalendar = (props) => {
   }
   return (
     <div className="row myCalendar__box">
-      <div className="col-md-4 myCalendar__addEvent">
+      <div className="col-md-1"></div>
+      <div className="col-md-2 myCalendar__addEvent">
+        <h2 className="myCalendar__title_h2">Create event:</h2>
         <AddEvent handleAddEvent={handleAddEvent} />
       </div>
-      <div className="col-md-4 row myCalendar__calendar">
+      <div className="col-md-6 row myCalendar__calendar">
         <Calendar
           localizer={localizer}
           events={events}
           startAccessor="start_date"
           endAccessor="end_date"
-          style={{ height: 700, margin: '70px' }}
+          style={styleCalendar}
           onSelectEvent={showModal}
         />
       </div>
+      <div className="col-md-3"></div>
 
       <ModalEvent
         handleAddEvent={handleAddEvent}
