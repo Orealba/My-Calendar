@@ -1,3 +1,10 @@
 .mycalendar__addEvent__component {
   margin-left: 20px;
 }
+.myCalendar__box {
+  display: flex;
+}
+.myCalendar__addEvent {
+}
+.myCalendar__calendar {
+}

@@ -66,16 +66,21 @@ const MyCalendar = (props) => {
     )
   }
   return (
-    <div>
-      <AddEvent handleAddEvent={handleAddEvent} />
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start_date"
-        endAccessor="end_date"
-        style={{ height: 500, margin: '50px' }}
-        onSelectEvent={showModal}
-      />
+    <div className="row myCalendar__box">
+      <div className="col-md-4 myCalendar__addEvent">
+        <AddEvent handleAddEvent={handleAddEvent} />
+      </div>
+      <div className="col-md-4 row myCalendar__calendar">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start_date"
+          endAccessor="end_date"
+          style={{ height: 700, margin: '70px' }}
+          onSelectEvent={showModal}
+        />
+      </div>
+
       <ModalEvent
         handleAddEvent={handleAddEvent}
         show={show}
