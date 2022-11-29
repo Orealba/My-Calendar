@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 const ModalEvent = (props) => {
   const deleteEvent = () => {
-    fetch(`http://localhost:5000/api/events/${props.selectedEvent.id}`, {
+    fetch(`${process.env.REACT_APP_BACK_URL}/${props.selectedEvent.id}`, {
       method: 'DELETE',
     })
       .then((json) => props.handleAddEvent('Deleted'))

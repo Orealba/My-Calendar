@@ -49,7 +49,8 @@ const MyCalendar = (props) => {
     handleAddEvent('')
   }, [])
   const handleAddEvent = (message) => {
-    fetch('http://localhost:5000/api/events')
+    console.log(process.env.BACK_URL)
+    fetch(`${process.env.REACT_APP_BACK_URL}`)
       .then((response) => response.json())
       .then((theEvent) => {
         setEvents(theEvent)
