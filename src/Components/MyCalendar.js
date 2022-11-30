@@ -50,7 +50,6 @@ const MyCalendar = (props) => {
     handleAddEvent('')
   }, [])
   const handleAddEvent = (message) => {
-    console.log(process.env.BACK_URL)
     fetch(`${process.env.REACT_APP_BACK_URL}`)
       .then((response) => response.json())
       .then((theEvent) => {
