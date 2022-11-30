@@ -46,6 +46,7 @@ const Edit = (props) => {
     <div className="row">
       <div className="col-md-4"></div>
       <div className="col-md-4 editEvent__box">
+        <h2>Edit this event:</h2>
         <form>
           <div className="row">
             <div className="col-md-12">
