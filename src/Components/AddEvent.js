@@ -15,7 +15,6 @@ const theNewEvent = {
 const AddEvent = (props) => {
   const [newEvent, setNewEvent] = useState(theNewEvent)
   const onClick = () => {
-    console.log(JSON.stringify(newEvent))
     fetch('http://localhost:5000/api/events', {
       method: 'POST',
       body: JSON.stringify(newEvent),
@@ -24,10 +23,7 @@ const AddEvent = (props) => {
       .then((response) => response.json())
       .then((json) => props.handleAddEvent('It has updated'))
       .then(setNewEvent(theNewEvent))
-      .catch((err) =>
-        //props.handleAddEvent('did not update')
-        console.log(err)
-      )
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -73,14 +69,14 @@ const AddEvent = (props) => {
             setNewEvent({
               ...newEvent,
               end_date: new Date(
-                end_date.getTime() - end_date.getTimezoneOffset() * 60001
+                end_date.getTime() - end_date.getTimezoneOffset() * 61000
               ),
             })
           }
         />
         <Button
           variant="primary"
-          className="addEvent__button__sudmit"
+          className="addEvent__button__submit"
           onClick={onClick}
         >
           Add Event

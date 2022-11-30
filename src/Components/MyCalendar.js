@@ -13,6 +13,7 @@ import AddEvent from './AddEvent'
 const locales = {
   'en-GB': require('date-fns/locale/en-GB'),
 }
+const styleCalendar = { height: 550, margin: '5px' }
 const localizer = dateFnsLocalizer({
   format,
   parse,
@@ -49,10 +50,9 @@ const MyCalendar = (props) => {
     handleAddEvent('')
   }, [])
   const handleAddEvent = (message) => {
-    fetch('http://localhost:5000/api/events')
+    fetch(`${process.env.REACT_APP_BACK_URL}`)
       .then((response) => response.json())
       .then((theEvent) => {
-        console.log(theEvent)
         setEvents(theEvent)
         setIsLoading(false)
       })
@@ -66,16 +66,24 @@ const MyCalendar = (props) => {
     )
   }
   return (
-    <div>
-      <AddEvent handleAddEvent={handleAddEvent} />
-      <Calendar
-        localizer={localizer}
-        events={events}
-        startAccessor="start_date"
-        endAccessor="end_date"
-        style={{ height: 500, margin: '50px' }}
-        onSelectEvent={showModal}
-      />
+    <div className="row myCalendar__box">
+      <div className="col-md-1"></div>
+      <div className="col-md-2 myCalendar__addEvent">
+        <h2 className="myCalendar__title_h2">Create event:</h2>
+        <AddEvent handleAddEvent={handleAddEvent} />
+      </div>
+      <div className="col-md-6 row myCalendar__calendar">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start_date"
+          endAccessor="end_date"
+          style={styleCalendar}
+          onSelectEvent={showModal}
+        />
+      </div>
+      <div className="col-md-3"></div>
+
       <ModalEvent
         handleAddEvent={handleAddEvent}
         show={show}

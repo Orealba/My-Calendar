@@ -6,15 +6,12 @@ import { useNavigate } from 'react-router-dom'
 
 const ModalEvent = (props) => {
   const deleteEvent = () => {
-    fetch(`http://localhost:5000/api/events/${props.selectedEvent.id}`, {
+    fetch(`${process.env.REACT_APP_BACK_URL}/${props.selectedEvent.id}`, {
       method: 'DELETE',
     })
       .then((json) => props.handleAddEvent('Deleted'))
       .then(props.handleClose)
-      .catch((err) =>
-        //props.handleAddEvent('did not update')
-        console.log(err)
-      )
+      .catch((err) => console.log(err))
   }
 
   const navigate = useNavigate()
@@ -27,11 +24,32 @@ const ModalEvent = (props) => {
       <Modal show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            {props.selectedEvent ? props.selectedEvent.title : ''}
+            <h4>
+              Title: {props.selectedEvent ? props.selectedEvent.title : ''}{' '}
+            </h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {props.selectedEvent ? props.selectedEvent.description : ''}
+          <h4>
+            Description:{' '}
+            {props.selectedEvent ? props.selectedEvent.description : ''}
+          </h4>
+        </Modal.Body>
+        <hr></hr>
+        <Modal.Body className="modalEvent__h4__dates">
+          <h4 className="modalEvent__h4__dates__start">
+            {' '}
+            Start:{' '}
+            {props.selectedEvent
+              ? new Date(props.selectedEvent.start_date).toLocaleDateString()
+              : ''}
+          </h4>
+          <h4>
+            End:{' '}
+            {props.selectedEvent
+              ? new Date(props.selectedEvent.end_date).toLocaleDateString()
+              : ''}
+          </h4>
         </Modal.Body>
         <Modal.Footer>
           <Button

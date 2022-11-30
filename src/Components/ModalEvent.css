@@ -6,8 +6,17 @@
   box-shadow: 1px 1.8px 1px 1px rgb(215, 210, 210);
   text-align: center;
   font-weight: bold !important;
+  width: 6rem;
 }
 .modalEvent__buttons:hover {
   transition: 0.7s !important;
   background-color: white !important;
+}
+
+.modalEvent__h4__dates {
+  display: flex;
+}
+
+.modalEvent__h4__dates__start {
+  margin-right: 5rem;
 }

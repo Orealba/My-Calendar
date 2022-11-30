@@ -1,3 +1,10 @@
 .mycalendar__addEvent__component {
   margin-left: 20px;
 }
+.myCalendar__box {
+  display: flex;
+}
+.myCalendar__title_h2 {
+  margin-left: 3rem;
+  color: #25253d;
+}
