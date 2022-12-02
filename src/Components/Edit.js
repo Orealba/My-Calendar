@@ -17,7 +17,7 @@ const Edit = (props) => {
     end_date: '',
   })
   const onClick = () => {
-    fetch(`http://localhost:5000/api/events/${id}`, {
+    fetch(`${process.env.REACT_APP_BACK_URL}/${id}`, {
       method: 'PUT',
       body: JSON.stringify(event),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
@@ -26,7 +26,7 @@ const Edit = (props) => {
       .catch((err) => console.log(err))
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/api/events/${id}`)
+    fetch(`${process.env.REACT_APP_BACK_URL}/${id}`)
       .then((response) => response.json())
       .then((theEvent) => {
         console.log(theEvent)

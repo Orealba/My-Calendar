@@ -15,7 +15,7 @@ const theNewEvent = {
 const AddEvent = (props) => {
   const [newEvent, setNewEvent] = useState(theNewEvent)
   const onClick = () => {
-    fetch('http://localhost:5000/api/events', {
+    fetch(`${process.env.REACT_APP_BACK_URL}`, {
       method: 'POST',
       body: JSON.stringify(newEvent),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
