@@ -10,6 +10,8 @@ import 'react-datepicker/dist/react-datepicker.css'
 import ModalEvent from './ModalEvent'
 import AddEvent from './AddEvent'
 
+import Alert from 'react-bootstrap/Alert'
+
 const locales = {
   'en-GB': require('date-fns/locale/en-GB'),
 }
@@ -46,6 +48,8 @@ const MyCalendar = (props) => {
   const [isLoading, setIsLoading] = useState(true)
   const [events, setEvents] = useState([])
 
+  const [showAlert, setShowAlert] = useState(false)
+
   useEffect(() => {
     handleAddEvent('')
   }, [])
@@ -56,6 +60,7 @@ const MyCalendar = (props) => {
         setEvents(theEvent)
         setIsLoading(false)
       })
+      .catch((err) => setShowAlert(true))
   }
 
   if (isLoading) {
@@ -70,7 +75,7 @@ const MyCalendar = (props) => {
       <div className="col-md-1"></div>
       <div className="col-md-2 myCalendar__addEvent">
         <h2 className="myCalendar__title_h2">Create event:</h2>
-        <AddEvent handleAddEvent={handleAddEvent} />
+        <AddEvent handleAddEvent={handleAddEvent} showAlert={setShowAlert} />
       </div>
       <div className="col-md-6 row myCalendar__calendar">
         <Calendar
@@ -90,6 +95,11 @@ const MyCalendar = (props) => {
         handleClose={handleClose}
         selectedEvent={selectedEvent}
       />
+      {showAlert && (
+        <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
+          <Alert.Heading> Oh no! You got an error! Try again.</Alert.Heading>
+        </Alert>
+      )}
     </div>
   )
 }

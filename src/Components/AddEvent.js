@@ -20,10 +20,18 @@ const AddEvent = (props) => {
       body: JSON.stringify(newEvent),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     })
-      .then((response) => response.json())
-      .then((json) => props.handleAddEvent('It has updated'))
-      .then(setNewEvent(theNewEvent))
-      .catch((err) => console.log(err))
+      .then((response) => {
+        if (response.ok) {
+          props.handleAddEvent('It has updated')
+          setNewEvent(theNewEvent)
+        } else {
+          props.showAlert(true)
+        }
+      })
+
+      .catch((err) => {
+        props.showAlert(true)
+      })
   }
 
   return (

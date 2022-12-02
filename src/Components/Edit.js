@@ -22,7 +22,7 @@ const Edit = (props) => {
       body: JSON.stringify(event),
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     })
-      .then((json) => navigate(`/`))
+      .then(() => navigate(`/`))
       .catch((err) => console.log(err))
   }
   useEffect(() => {
