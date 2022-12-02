@@ -60,13 +60,18 @@ const MyCalendar = (props) => {
         setEvents(theEvent)
         setIsLoading(false)
       })
-      .catch((err) => setShowAlert(true))
+      .catch(() => {
+        setShowAlert(true)
+        setTimeout(() => {
+          setShowAlert(false)
+        }, 5000)
+      })
   }
 
   if (isLoading) {
     return (
       <div>
-        <h1>Loading...</h1>
+        <h1 className="myCalendar__h1__loading"> Loading...</h1>
       </div>
     )
   }

@@ -26,11 +26,17 @@ const AddEvent = (props) => {
           setNewEvent(theNewEvent)
         } else {
           props.showAlert(true)
+          setTimeout(() => {
+            props.showAlert(false)
+          }, 5000)
         }
       })
 
-      .catch((err) => {
+      .catch(() => {
         props.showAlert(true)
+        setTimeout(() => {
+          props.showAlert(false)
+        }, 5000)
       })
   }
 
