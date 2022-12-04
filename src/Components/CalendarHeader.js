@@ -11,6 +11,7 @@ const CalendarHeader = () => {
     <div className="row calendarHeader__box">
       <div className="col-md-4">
         <img
+          alt="Factorial Logo"
           src="/Pictures/FactorialLogo.png"
           className="calendar-header-logo"
           onClick={redirection}

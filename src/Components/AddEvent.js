@@ -22,7 +22,7 @@ const AddEvent = (props) => {
     })
       .then((response) => {
         if (response.ok) {
-          props.handleAddEvent('It has updated')
+          props.handleAddEvent('The event has been updated')
           setNewEvent(theNewEvent)
         } else {
           props.showAlert(true)
