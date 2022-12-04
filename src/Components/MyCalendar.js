@@ -9,7 +9,6 @@ import './AddEvent.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import ModalEvent from './ModalEvent'
 import AddEvent from './AddEvent'
-
 import Alert from 'react-bootstrap/Alert'
 
 const locales = {
@@ -24,7 +23,7 @@ const localizer = dateFnsLocalizer({
   locales,
 })
 
-const MyCalendar = (props) => {
+const MyCalendar = () => {
   const [selectedEvent, setSelectedEvent] = useState({
     title: '',
     description: '',
@@ -47,7 +46,6 @@ const MyCalendar = (props) => {
 
   const [isLoading, setIsLoading] = useState(true)
   const [events, setEvents] = useState([])
-
   const [showAlert, setShowAlert] = useState(false)
 
   useEffect(() => {

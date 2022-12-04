@@ -148,7 +148,8 @@ const Edit = () => {
         </div>
         <div className="col-md-4"></div>
       </div>
-
+      {/** If all the fields are not filled in,
+       * the alert appears and disappears after 5 seconds */}
       {showAlert && (
         <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
           <Alert.Heading>
