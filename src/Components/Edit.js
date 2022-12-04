@@ -152,7 +152,6 @@ const Edit = () => {
       {showAlert && (
         <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
           <Alert.Heading>
-            {' '}
             Oh no! You got an error! Try again please.
           </Alert.Heading>
         </Alert>
