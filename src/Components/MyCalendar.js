@@ -53,7 +53,7 @@ const MyCalendar = (props) => {
   useEffect(() => {
     handleAddEvent('')
   }, [])
-  const handleAddEvent = (message) => {
+  const handleAddEvent = () => {
     fetch(`${process.env.REACT_APP_BACK_URL}`)
       .then((response) => response.json())
       .then((theEvent) => {
@@ -102,7 +102,10 @@ const MyCalendar = (props) => {
       />
       {showAlert && (
         <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
-          <Alert.Heading> Oh no! You got an error! Try again.</Alert.Heading>
+          <Alert.Heading>
+            {' '}
+            Oh no! You got an error! Try again please.
+          </Alert.Heading>
         </Alert>
       )}
     </div>

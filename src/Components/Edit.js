@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Edit.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import DatePicker from 'react-datepicker'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 
@@ -45,7 +45,6 @@ const Edit = () => {
     fetch(`${process.env.REACT_APP_BACK_URL}/${id}`)
       .then((response) => response.json())
       .then((theEvent) => {
-        console.log(theEvent)
         setEvent(theEvent)
         setIsLoading(false)
       })
@@ -152,7 +151,10 @@ const Edit = () => {
 
       {showAlert && (
         <Alert variant="danger" dismissible onClose={() => setShowAlert(false)}>
-          <Alert.Heading> Oh no! You got an error! Try again.</Alert.Heading>
+          <Alert.Heading>
+            {' '}
+            Oh no! You got an error! Try again please.
+          </Alert.Heading>
         </Alert>
       )}
     </>

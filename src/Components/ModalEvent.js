@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import './ModalEvent.css'
@@ -9,7 +9,7 @@ const ModalEvent = (props) => {
     fetch(`${process.env.REACT_APP_BACK_URL}/${props.selectedEvent.id}`, {
       method: 'DELETE',
     })
-      .then((json) => props.handleAddEvent('Deleted'))
+      .then(() => props.handleAddEvent('The event has been deleted'))
       .then(props.handleClose)
       .catch((err) => console.log(err))
   }
