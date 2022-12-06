@@ -14,6 +14,7 @@ import Alert from 'react-bootstrap/Alert'
 const locales = {
   'en-GB': require('date-fns/locale/en-GB'),
 }
+/*configuration for calendar*/
 const styleCalendar = { height: 550, margin: '5px' }
 const localizer = dateFnsLocalizer({
   format,
