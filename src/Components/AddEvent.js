@@ -75,6 +75,8 @@ const AddEvent = (props) => {
             })
           }
         />
+        {/*I multiply the TimezoneOffset by sixty thousand to convert it to milliseconds
+         and subtract it from the date in my time zone to have the corrected date */}
         <DatePicker
           placeholderText="End Date"
           className="addEvent__datePicker"

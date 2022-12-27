@@ -25,27 +25,26 @@ const ModalEvent = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>
             <h4>
-              Title: {props.selectedEvent ? props.selectedEvent.title : ''}{' '}
+              Title: {props.selectedEvent ? props.selectedEvent.title : ''}
             </h4>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>
-            Description:{' '}
+            Description:
             {props.selectedEvent ? props.selectedEvent.description : ''}
           </h4>
         </Modal.Body>
         <hr></hr>
         <Modal.Body className="modalEvent__h4__dates">
           <h4 className="modalEvent__h4__dates__start">
-            {' '}
-            Start:{' '}
+            Start:
             {props.selectedEvent
               ? new Date(props.selectedEvent.start_date).toLocaleDateString()
               : ''}
           </h4>
           <h4>
-            End:{' '}
+            End:
             {props.selectedEvent
               ? new Date(props.selectedEvent.end_date).toLocaleDateString()
               : ''}
