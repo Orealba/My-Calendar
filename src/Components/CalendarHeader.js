@@ -9,16 +9,11 @@ const CalendarHeader = () => {
   }
   return (
     <div className="row calendarHeader__box">
+      <div className="col-md-4"></div>
       <div className="col-md-4">
-        <img
-          alt="Factorial Logo"
-          src="/Pictures/FactorialLogo.png"
-          className="calendar-header-logo"
-          onClick={redirection}
-        ></img>
-      </div>
-      <div className="col-md-4">
-        <h1 className="calendar-header__title">MY CALENDAR</h1>
+        <h1 className="calendar-header__title" onClick={redirection}>
+          MY CALENDAR
+        </h1>
         <h4 className="calendar-header__description">
           Add and edit your events easily.
           <br></br>
